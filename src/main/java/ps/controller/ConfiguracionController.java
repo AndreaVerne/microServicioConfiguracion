@@ -28,14 +28,6 @@ public class ConfiguracionController {
 	@Autowired
 	private ConfiguracionRepository configuracionRepository;
 
-	@Value("${variable_env}")
-	private String variable_env;
-
-	@GetMapping("/variable_env")
-	public String obtener_variable_env() {
-		return variable_env;
-	}
-
 	@GetMapping("/string")
 	public String obtener_string_hardcodeado() {
 		return "Un mensaje de texto.";
