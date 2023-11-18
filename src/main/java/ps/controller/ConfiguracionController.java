@@ -41,11 +41,11 @@ public class ConfiguracionController {
 
 	// Crear una nueva configuracion
 		@PostMapping
-		@Operation(summary = "Agregar una tarifa", description = "Se incorpora una configuracion vigente especificado en un JSON siempre y cuando sea administrador el usuario conectado")
+		@Operation(summary = "Agregar una configuracion", description = "Se incorpora una configuracion vigente especificado en un JSON siempre y cuando sea administrador el usuario conectado")
 		public Configuracion addConfiguracion(@RequestBody Configuracion configuracion, @RequestHeader("Authorization") String authorization) {
 			
-			// si es administrador puede guardar tarifa
-			if (token.autorizado(authorization).contains("ADMIN")) {
+			// si es administrador puede guardar configuracion
+			if (token.autorizado(authorization).contains("a")) {
 	            return configuracionRepository.save(configuracion);
 	        }
 	        System.out.println("token no autorizado");
@@ -58,7 +58,7 @@ public class ConfiguracionController {
 	    @Operation(summary = "Agregar una tarifa", description = "Se incorpora una configuracion vigente especificado en un JSON siempre y cuando sea administrador el usuario conectado")
 	    public Configuracion getCurrentConfiguration (@RequestBody Configuracion configuracion, @RequestHeader("Authorization") String authorization) {
 	        Date currentDate = new Date(); // Obtén la fecha actual
-	    	if (token.autorizado(authorization).contains("ADMIN")) {
+	    	if (token.autorizado(authorization).contains("a")) {
 	        return configuracionRepository.findFirstByFechaBeforeOrderByFechaDesc(currentDate);
 	    }
 	        System.out.println("token no autorizado");
