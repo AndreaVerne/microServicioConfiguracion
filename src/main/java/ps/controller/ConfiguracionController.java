@@ -27,6 +27,7 @@ public class ConfiguracionController {
 	
 	@Autowired
 	private ConfiguracionRepository configuracionRepository;
+	
 
 	@GetMapping("/string")
 	public String obtener_string_hardcodeado() {
@@ -41,6 +42,7 @@ public class ConfiguracionController {
 
 	    // Endpoint para obtener la configuración más reciente antes de la fecha actual
 	    @GetMapping("/")
+	    
 	    public Configuracion getCurrentConfiguration() {
 	        Date currentDate = new Date(); // Obtén la fecha actual
 	        return configuracionRepository.findFirstByFechaBeforeOrderByFechaDesc(currentDate);
